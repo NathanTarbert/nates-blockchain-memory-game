@@ -7,6 +7,10 @@
   display: inline-block;
 }
 
-.text-muted {
+h1 {
   color: white;
+}
+
+h5 {
+  color: white
 }

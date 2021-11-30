@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Web3 from 'web3';
 import './App.css';
 import MemoryToken from '../abis/MemoryToken.json';
-import brain from '../brain.png';
+import rocket from '../rocket.png';
 
  const CARD_ARRAY = [
   {
@@ -58,62 +58,62 @@ import brain from '../brain.png';
 class App extends Component {
 
   async componentWillMount() {
-    await this.loadWeb3()
-    await this.loadBlockchainData()
-    this.setState({ cardArray: CARD_ARRAY.sort(() => 0.5 - Math.random()) })
+    await this.loadWeb3();
+    await this.loadBlockchainData();
+    this.setState({ cardArray: CARD_ARRAY.sort(() => 0.5 - Math.random()) });
   }
 
   async loadWeb3() {
     if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum)
-      await window.ethereum.enable()
+      window.web3 = new Web3(window.ethereum);
+      await window.ethereum.enable();
     }
     else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider)
+      window.web3 = new Web3(window.web3.currentProvider);
     }
     else {
-      window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+      window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
     }
   }
 
   async loadBlockchainData() {
-    const web3 = window.web3
-    const accounts = await web3.eth.getAccounts()
-    this.setState({ account: accounts[0] })
+    const web3 = window.web3;
+    const accounts = await web3.eth.getAccounts();
+    this.setState({ account: accounts[0] });
 
     // Load smart contract
-    const networkId = await web3.eth.net.getId()
-    const networkData = MemoryToken.networks[networkId]
+    const networkId = await web3.eth.net.getId();
+    const networkData = MemoryToken.networks[networkId];
     if(networkData) {
-      const abi = MemoryToken.abi
-      const address = networkData.address
-      const token = new web3.eth.Contract(abi, address)
-      this.setState({ token })
-      const totalSupply = await token.methods.totalSupply().call()
-      this.setState({ totalSupply })
+      const abi = MemoryToken.abi;
+      const address = networkData.address;
+      const token = new web3.eth.Contract(abi, address);
+      this.setState({ token });
+      const totalSupply = await token.methods.totalSupply().call();
+      this.setState({ totalSupply });
       // Load Tokens
-      let balanceOf = await token.methods.balanceOf(accounts[0]).call()
+      let balanceOf = await token.methods.balanceOf(accounts[0]).call();
       for (let i = 0; i < balanceOf; i++) {
-        let id = await token.methods.tokenOfOwnerByIndex(accounts[0], i).call()
-        let tokenURI = await token.methods.tokenURI(id).call()
+        let id = await token.methods.tokenOfOwnerByIndex(accounts[0], i).call();
+        let tokenURI = await token.methods.tokenURI(id).call();
         this.setState({
           tokenURIs: [...this.state.tokenURIs, tokenURI]
-        })
+        });
       }
     } else {
-      alert('Smart contract not deployed to detected network.')
+      alert('Smart contract not deployed to detected network.');
     }
   }
 
   chooseImage = (cardId) => {
     cardId = cardId.toString()
     if(this.state.cardsWon.includes(cardId)) {
-      return window.location.origin + '/images/white.png'
+      return window.location.origin + '/images/black.png'
     }
     else if(this.state.cardsChosenId.includes(cardId)) {
       return CARD_ARRAY[cardId].img
     } else {
-      return window.location.origin + '/images/blank.png'
+      return window.location.origin + '/images/square.png'
     }
   }
 
@@ -186,16 +186,16 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-          <img src={brain} width="30" height="30" className="d-inline-block align-top" alt="" />
+          <img src={rocket} width="30" height="30" className="d-inline-block align-top" alt="" />
           &nbsp; Memory Tokens
           </a>
           <ul className="navbar-nav px-3">
             <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
-              <small className="text-muted"><span id="account">{this.state.account}</span></small>
+              <small className="text-muted" ><span id="account" style={{ color: 'white' }}>{this.state.account}</span></small>
             </li>
           </ul>
         </nav>
-        <div className="container-fluid mt-5">
+        <div className="container-fluid mt-5" style={{ backgroundColor: 'gray'}}>
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center">
               <div className="content mr-auto ml-auto">
