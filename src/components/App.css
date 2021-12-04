@@ -1,5 +1,10 @@
 /* Styles go here */
 
+body {
+  background: rgb(59, 245, 22);
+
+}
+
 .token {
   height: 150px;
   width: 150px;
@@ -12,5 +17,13 @@ h1 {
 }
 
 h5 {
-  color: white
+  color: white;
 }
+
+.container-fluid {
+  background-color:  rgb(27, 24, 24);
+}
+
+/* .text-muted {
+  color: white;
+} */

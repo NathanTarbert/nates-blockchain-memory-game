@@ -106,9 +106,10 @@ class App extends Component {
   }
 
   chooseImage = (cardId) => {
-    cardId = cardId.toString()
+    cardId = cardId.toString();
+    
     if(this.state.cardsWon.includes(cardId)) {
-      return window.location.origin + '/images/black.png'
+      return window.location.origin + '/images/white.png'
     }
     else if(this.state.cardsChosenId.includes(cardId)) {
       return CARD_ARRAY[cardId].img
@@ -191,11 +192,11 @@ class App extends Component {
           </a>
           <ul className="navbar-nav px-3">
             <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
-              <small className="text-muted" ><span id="account" style={{ color: 'white' }}>{this.state.account}</span></small>
+              <small className="text-muted" ><span id="account" style={{ color: 'white'}} >{this.state.account}</span></small>
             </li>
           </ul>
         </nav>
-        <div className="container-fluid mt-5" style={{ backgroundColor: 'gray'}}>
+        <div className="container-fluid mt-5" >
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center">
               <div className="content mr-auto ml-auto">
@@ -229,10 +230,14 @@ class App extends Component {
 
                     { this.state.tokenURIs.map((tokenURI, key) => {
                       return(
+                        <div > 
+                          <br></br><br></br><br></br><br></br>
+
                         <img
                           key={key}
                           src={tokenURI}
                         />
+                        </div>
                       )
                     })}
 
