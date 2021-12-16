@@ -136,7 +136,7 @@ class App extends Component {
     const optionOneId = this.state.cardsChosenId[0]
     const optionTwoId = this.state.cardsChosenId[1]
 
-    if(optionOneId == optionTwoId) {
+    if(optionOneId === optionTwoId) {
       alert('You have clicked the same image!')
     } else if (this.state.cardsChosen[0] === this.state.cardsChosen[1]) {
       alert('You found a match')
@@ -200,7 +200,8 @@ class App extends Component {
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center">
               <div className="content mr-auto ml-auto">
-                <h1 className="d-4">Match and win!'</h1>
+                <h1 className="d-4">Match and mint tokens!'</h1>
+                <button onClick={ () => alert('Connect Ganache to your Metamask to start the game.')}>Instructions</button><br></br><br></br>
 
                 <div className="grid mb-4" >
 

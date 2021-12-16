@@ -24,6 +24,12 @@ h5 {
   background-color:  rgb(27, 24, 24);
 }
 
+button {
+  background-color: rgb(226, 243, 222);
+  border-radius: 5px;
+  font-size: 15px;
+}
+
 /* .text-muted {
   color: white;
 } */
