@@ -30,6 +30,11 @@ button {
   font-size: 15px;
 }
 
+footer {
+  margin-top: 170px;
+  margin-left: 700px;
+}
+
 /* .text-muted {
   color: white;
 } */

@@ -251,8 +251,9 @@ class App extends Component {
             </main>
           </div>
         </div>
+        <footer>Game Dev @2021</footer>
       </div>
-    );
+          );
   }
 }
 
