@@ -2,6 +2,8 @@
 
 App is deployed here: https://nates-blockchain-memory-game.netlify.app/
 
-Blockchain memory game that uses the users Metamask wallet to earn tokens when the user makes a match. 
+This is a Blockchain memory game that connects to the Metamask wallet and mints tokens once the user matches a card. 
 
-The app is programmed in Solidity and JavaScript. We use Ganache and Truffle as our moch blockchain to pay the gas fees when we make the blockchain transaction.
+The app is programmed in Solidity and JavaScript. Genache is used as our moch blockchain that will connect to our wallet
+and then a transaction will be made and settled on the blockchain. Tokens will be stored and displayed as you mint them.
+
