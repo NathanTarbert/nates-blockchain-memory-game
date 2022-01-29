@@ -60,6 +60,7 @@ function AlertDismissible() {
   const [show, setShow] = useState(false);
 
   return (
+    //set a flag and only show the alert if it is true
     <>
       <Alert show={show} variant="success">
         <Alert.Heading>Do you have Metamask installed?</Alert.Heading>
