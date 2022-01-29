@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+import { Alert, Button } from 'react-bootstrap';
 import Web3 from 'web3';
 import './App.css';
 import MemoryToken from '../abis/MemoryToken.json';
@@ -55,6 +56,29 @@ import rocket from '../rocket.png';
   }
 ];
 
+function AlertDismissible() {
+  const [show, setShow] = useState(false);
+
+  return (
+    <>
+      <Alert show={show} variant="success">
+        <Alert.Heading>Do you have Metamask installed?</Alert.Heading>
+        <p>
+         To start the game your Metamask must either be connected to a testnet, Ganache or Hardhat local environment.
+        </p>
+        <hr />
+        <div className="d-flex justify-content-center" >
+          <Button onClick={() => setShow(false)} variant="outline-success">
+            Close window!
+          </Button>
+        </div>
+      </Alert>
+
+      {!show && <Button onClick={() => setShow(true)}>Instructions</Button>}
+    </>
+  );
+}
+
 class App extends Component {
 
   async componentWillMount() {
@@ -72,7 +96,7 @@ class App extends Component {
       window.web3 = new Web3(window.web3.currentProvider);
     }
     else {
-      window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
+      alert('Non-Ethereum browser detected. You should consider trying MetaMask!')      
     }
   }
 
@@ -101,7 +125,7 @@ class App extends Component {
         });
       }
     } else {
-      alert('Smart contract not deployed to detected network.');
+      alert('Smart contract not deployed to detected network')
     }
   }
 
@@ -130,7 +154,6 @@ class App extends Component {
       setTimeout(this.checkForMatch, 100)
     }
   }
-
 
   checkForMatch = async () => {
     const optionOneId = this.state.cardsChosenId[0]
@@ -200,14 +223,14 @@ class App extends Component {
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center">
               <div className="content mr-auto ml-auto">
-                <h1 className="d-4">Match and mint tokens!'</h1>
-                <button onClick={ () => alert('Connect Ganache to your Metamask to start the game.')}>Instructions</button><br></br><br></br>
+                <h1 className="d-4">Match and mint tokens!</h1>
+                <AlertDismissible /><br></br><br></br>
 
                 <div className="grid mb-4" >
 
                    { this.state.cardArray.map((card, key) => {
                     return(
-                      <img
+                      <image
                         key={key}
                         src={this.chooseImage(key)}
                         data-id={key}
@@ -234,7 +257,7 @@ class App extends Component {
                         <div > 
                           <br></br><br></br><br></br><br></br>
 
-                        <img
+                        <image
                           key={key}
                           src={tokenURI}
                         />
