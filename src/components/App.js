@@ -231,7 +231,7 @@ class App extends Component {
 
                    { this.state.cardArray.map((card, key) => {
                     return(
-                      <image
+                      <img
                         key={key}
                         src={this.chooseImage(key)}
                         data-id={key}
@@ -258,7 +258,7 @@ class App extends Component {
                         <div > 
                           <br></br><br></br><br></br><br></br>
 
-                        <image
+                        <img
                           key={key}
                           src={tokenURI}
                         />
